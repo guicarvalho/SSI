@@ -36,5 +36,3 @@ char *say_double(int x)
 
 	return produce_string();
 }
-
-

@@ -1,7 +1,7 @@
 CC := gcc
 CFLAGS := -c -Wall -Werror -fPIC 
 INCLUDES := -I../include
-SOURCES := say.c
+SOURCES := *.c
 OBJECTS := $(SOURCES:.c=.o)
 OUT := ../lib/libsay.so
 
