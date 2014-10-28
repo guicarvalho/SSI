@@ -1,6 +1,8 @@
 #include <jni.h>
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
+#include "caesar.h"
 #include "br_edu_ifsp_arq_cin_ads_ssi_HelloWorld.h"
 
 
@@ -26,3 +28,28 @@ JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_crypt
 }
 
 
+const char *test_1(const char *name) {
+	return name;
+}
+
+/* Caesar cipher */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_caesar_1crypt
+  (JNIEnv *env, jobject jobj, jstring msg, jint shift)
+{
+	const char *str = (*env)->GetStringChars(env, msg, 0);
+	
+	if (str == NULL)
+		return NULL;
+	
+	// funciona (função defina aqui dentro)
+	const char *resp_1 = test_1((const char *)"olá mundo");
+	printf("resposta(1) da função: %s\n", resp_1);
+	
+	// não funciona (função externa)
+	(*env)->ReleaseStringChars(env, msg, str);
+	const char *resp_2 = test(str);
+	printf("resposta(2) da função: %s\n", resp_2);
+
+	return (*env)->NewStringUTF(env, str);
+}
+/* ============= */

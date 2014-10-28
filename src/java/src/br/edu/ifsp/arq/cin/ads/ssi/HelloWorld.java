@@ -4,6 +4,18 @@ public class HelloWorld {
 
 	public native void helloFromC();
 
+	// Caesar cipher
+	public native String caesar_crypt(String msg, int shift);
+	public native String caesar_decrypt(String msg, int shift);
+
+	// One-time-pad cipher
+	public native String otp_crypt(String msg, int shift);
+	public native String otp_decrypt(String msg, int shift);
+
+	// Hill cipher
+	public native String hill_crypt(String msg, int shift);
+	public native String hill_decrypt(String msg, int shift);
+
 	public native String crypt(String msg);
 
 	static {
@@ -11,12 +23,15 @@ public class HelloWorld {
 	}
 
 	public static void main(String[] args) {
-		System.out.println("Hello world!");
+		//System.out.println("Hello world!");
 		
 		HelloWorld hw = new HelloWorld();
-		hw.helloFromC();
-		String crypted = hw.crypt("Sent from Java");
-		System.out.println("Received from C: " + crypted);
+		//hw.helloFromC();
+		//String crypted = hw.crypt("Sent from Java");
+		//System.out.println("Received from C: " + crypted);
+
+		String s = hw.caesar_crypt("guilherme", 3);
+		//System.out.println("Resultado oloco meu: " + s);
 	}
 
 }

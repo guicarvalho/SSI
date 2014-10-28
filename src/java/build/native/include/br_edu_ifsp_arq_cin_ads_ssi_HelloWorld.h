@@ -17,6 +17,54 @@ JNIEXPORT void JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_helloFromC
 
 /*
  * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
+ * Method:    caesar_crypt
+ * Signature: (Ljava/lang/String;I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_caesar_1crypt
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
+ * Method:    caesar_decrypt
+ * Signature: (Ljava/lang/String;I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_caesar_1decrypt
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
+ * Method:    otp_crypt
+ * Signature: (Ljava/lang/String;I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_otp_1crypt
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
+ * Method:    otp_decrypt
+ * Signature: (Ljava/lang/String;I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_otp_1decrypt
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
+ * Method:    hill_crypt
+ * Signature: (Ljava/lang/String;I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_hill_1crypt
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
+ * Method:    hill_decrypt
+ * Signature: (Ljava/lang/String;I)Ljava/lang/String;
+ */
+JNIEXPORT jstring JNICALL Java_br_edu_ifsp_arq_cin_ads_ssi_HelloWorld_hill_1decrypt
+  (JNIEnv *, jobject, jstring, jint);
+
+/*
+ * Class:     br_edu_ifsp_arq_cin_ads_ssi_HelloWorld
  * Method:    crypt
  * Signature: (Ljava/lang/String;)Ljava/lang/String;
  */
