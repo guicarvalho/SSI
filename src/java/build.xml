@@ -1,0 +1,51 @@
+<project name="HelloWorld" basedir="." default="main">
+
+	<property name="src.dir" value="src"/>
+	<property name="build.dir" value="build"/>
+	<property name="classes.dir" value="${build.dir}/classes"/>
+	<property name="jar.dir" value="${build.dir}/jar"/>
+	<property name="main-class" value="br.edu.ifsp.arq.cin.ads.ssi.HelloWorld"/>
+	<property name="native.include" value="${build.dir}/native/include" />
+	<property name="native.dir" value="${src.dir}/native" />
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+		<delete file="${native.dir}/libhelloc.so"/>
+	</target>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" />
+	</target>
+
+	<target name="native">
+		<mkdir dir="${native.include}" />
+
+		<javah destdir="${native.include}" force="yes" classpath="${classes.dir}">
+			<class name="${main-class}" />
+		</javah>
+
+		<exec executable="make" dir="${native.dir}" />
+		<copy file="${native.dir}/libhelloc.so" todir="${jar.dir}"/>
+	</target>
+
+	<target name="jar" depends="compile,native">
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${main-class}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="exec">
+		<java jar="${jar.dir}/${ant.project.name}.jar" fork="true">
+			<sysproperty key="java.library.path" path="${jar.dir}"/>
+		</java>
+	</target>
+
+	<target name="run" depends="jar,exec"/>
+
+	<target name="clean-build" depends="clean,jar" />
+	<target name="main" depends="clean,run" />
+</project>
