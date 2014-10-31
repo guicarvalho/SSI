@@ -1,10 +1,15 @@
 # coding: utf-8
 
 from flask import Flask, render_template, request
+
 import algo_crypt
 import datetime
 import string
 import ipdb
+import sys
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 
 app = Flask(__name__)
@@ -28,7 +33,6 @@ total_each_cipher = {
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-	# ipdb.set_trace()
 	if request.method == 'POST':
 		msg = request.form['message']
 		key = request.form['key']
@@ -43,6 +47,16 @@ def index():
 		caesar=total_each_cipher['caesar'], 
 		otp=total_each_cipher['otp'],
 		hill=total_each_cipher['hill'],
+	)
+
+@app.route('/list/<cipher>', methods=['GET'])
+def list(cipher):
+	# ipdb.set_trace()
+	# return str(_list_messages(cipher))
+	return render_template(
+		'list.html',
+		chiper_name=cipher,
+		message_list=_list_messages(cipher),
 	)
 
 def _crypt_message(msg, key, cipher):
@@ -63,14 +77,24 @@ def _crypt_message(msg, key, cipher):
 	return message
 
 def _add_message(raw_msg, crypt_msg, cipher):
+	global message_list
 	obj = {
 		'cipher': cipher,
 		'raw_msg': raw_msg,
-		'crypt_msg': crypt_msg,
+		'crypt_msg': crypt_msg.decode('utf-8', 'replace'),
 		'date_joined': str(datetime.datetime.now())
 	}
 
 	message_list.append(obj)
+
+def _list_messages(cipher):
+	cipher_message_list = []
+
+	for obj in message_list:
+		if obj['cipher'] == cipher:
+			cipher_message_list.append(obj)
+
+	return cipher_message_list
 
 def _increment_cipher(cipher):
 	total_each_cipher[cipher] += 1

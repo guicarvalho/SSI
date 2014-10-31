@@ -3,8 +3,8 @@
 		<title>Frases Ao Vento</title>
 
 		<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -15,11 +15,11 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-	    <!--[if lt IE 9]>
-	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	    <![endif]-->
+	    	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	    	<!--[if lt IE 9]>
+	      		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	      		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	    	<![endif]-->
 	</head>
 	<body>
 		
@@ -30,9 +30,9 @@
 		  		Mensagens ao Vento é um site onde você cadastra suas mensagens de forma segura, usando o algoritmo de criptografia de sua escolha. Digite uma mensagem e escolha o algoritmo de criptografia para codificar sua mensagem.
 		  	</p>
 		  	<p>
-		  		<span class="label label-default">Cifra de Hill - {{ hill }}</span>
-		  		<span class="label label-default">Cifra de Cesar - {{ caesar }}</span>
-		  		<span class="label label-default">OTP - {{ otp }}</span>
+			<a href="{{ url_for('list', cipher='hill') }}"><span class="label label-default">Cifra de Hill - {{ hill }}</span></a>
+			<a href="{{ url_for('list', cipher='caesar') }}"><span class="label label-default">Cifra de Cesar - {{ caesar }}</span></a>
+			<a href="{{ url_for('list', cipher='otp') }}"><span class="label label-default">OTP - {{ otp }}</span></a>
 		  	</p>
 			</div>
 
