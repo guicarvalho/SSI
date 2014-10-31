@@ -5,12 +5,7 @@ from flask import Flask, render_template, request
 import algo_crypt
 import datetime
 import string
-import ipdb
 import sys
-
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
 
 app = Flask(__name__)
 
@@ -51,8 +46,6 @@ def index():
 
 @app.route('/list/<cipher>', methods=['GET'])
 def list(cipher):
-	# ipdb.set_trace()
-	# return str(_list_messages(cipher))
 	return render_template(
 		'list.html',
 		chiper_name=cipher,
