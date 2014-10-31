@@ -1,0 +1,2 @@
+http://stuf.ro/calling-c-code-from-java-using-jni
+http://web.archive.org/web/20120420235926/http://java.sun.com/docs/books/jni/html/objtypes.html
