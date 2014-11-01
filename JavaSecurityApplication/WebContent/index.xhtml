@@ -31,25 +31,24 @@
 	  		Mensagens ao Vento é um site onde você cadastra suas mensagens de forma segura, usando o algoritmo de criptografia de sua escolha. Digite uma mensagem e escolha o algoritmo de criptografia para codificar sua mensagem.
 	  	</p>
 	  	<p>
-		<a href=""><span class="label label-default">Cifra de Hill - 0</span></a>
-		<a href=""><span class="label label-default">Cifra de Cesar - 0</span></a>
-		<a href=""><span class="label label-default">OTP - 0</span></a>
 	  	</p>
 	</div>
 	<h:form class="form-class">
 		<div class="form-group">
 			<h:outputLabel value="Cipher:" for="cipher" />
-			<h:selectOneMenu class="form-control" name="cipher" value="">
-				
+			<h:selectOneMenu class="form-control" name="cipher" value="#{cipherController.cipher.name}">
+				<f:selectItem itemValue="caesar"/>
+				<f:selectItem itemValue="hill"/>
+				<f:selectItem itemValue="otp"/>
 			</h:selectOneMenu>
 		</div>
 		<div class="form-group">
 			<h:outputLabel value="Key" for="key" />
-			<h:inputText id="key" class="form-control" />
+			<h:inputText id="key" class="form-control" value="#{cipherController.cipher.key}" />
 		</div>
 		<div class="form-group">
 			<h:outputLabel value="Message" for="message" />
-			<h:inputTextarea id="message" class="form-control" name="message" rows="10" />
+			<h:inputTextarea id="message" class="form-control" value="#{cipherController.cipher.rawMessage}" name="message" rows="10" />
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary btn-lg">Register</button>
